@@ -1,6 +1,10 @@
 import PropTypes from "prop-types"; 
 
 export default function Todolist(props) {
+    const Remove = (index) => {
+        props.removelist(index);
+    }
+    
     return (
         <div>
             <table>
@@ -15,6 +19,9 @@ export default function Todolist(props) {
                         <tr key={index}>
                             <td>{todo.date}</td>
                             <td>{todo.desc}</td>
+                            <td>
+                                <button onClick={() => Remove(index)}>Delete</button>
+                            </td>
                         </tr>
                     )}
                 </tbody>
@@ -30,5 +37,6 @@ Todolist.propTypes = {
             desc: PropTypes.string.isRequired, 
             date: PropTypes.string.isRequired, 
         })
-    ).isRequired, 
+    ).isRequired,
+    removelist: PropTypes.func.isRequired 
 };

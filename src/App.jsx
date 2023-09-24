@@ -14,6 +14,11 @@ function App() {
     event.preventDefault();
     setTodos([...todos, todo]);
   }
+
+  const removeList = (indexDelete) => {
+  const newTable = todos.filter((_, index) => index !== indexDelete);
+  setTodos(newTable);
+  };
   return (
     <div className='App'>
       <form onSubmit={addTodo}>
@@ -23,8 +28,9 @@ function App() {
         
         <input type='text' name="desc" value={todo.desc} onChange={inputChanged} />
         <input type='submit' value ="Add" />
+        
       </form>
-      <Todotable todos={todos}/>
+      <Todotable todos={todos} removelist={removeList}/>
     </div>
   )
 }
