@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import "./App.css";
 import Home from "./components/Home";
 import Todolist from "./components/Todo";
-
 function App() {
   const [selectedTab, setSelectedTab] = useState("home");
 

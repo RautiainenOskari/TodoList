@@ -7,11 +7,13 @@ import 'ag-grid-community/styles/ag-grid.css';
 import 'ag-grid-community/styles/ag-theme-material.css';
 import { useRef } from 'react';
 import TextField from '@mui/material/TextField';
+import Stack from '@mui/material/Stack';
 
 function Todolist() {
   const [todo, setTodo] = useState({description: '', date: '', priority:''});
   const [todos, setTodos] = useState([]);
   const gridRef = useRef();
+
 
   const inputChanged = (event) => {
       setTodo({ ...todo, [event.target.name]: event.target.value });
@@ -45,6 +47,7 @@ function Todolist() {
   return (
 
     <div>
+      <Stack direction="row" spacing={2} justifyContent="center" alignItems="center">
       <TextField
         label="Description"
         variant="standard"
@@ -53,7 +56,9 @@ function Todolist() {
         <TextField
         label="Date"
         variant="standard"
-        name="date" />
+        name="date"
+        value={todo.date}
+        onChange={inputChanged} />
         <TextField
         label="Priority"
         variant="standard"
@@ -61,7 +66,7 @@ function Todolist() {
         onChange={inputChanged}/>
       <button onClick={addTodo}>Add</button>
       <button onClick={deleteTodo}>Delete</button>
-
+      </Stack>
       <div className="ag-theme-material"
 style={{height: '700px', width: '100%', margin: 'auto'}} >
 <AgGridReact
