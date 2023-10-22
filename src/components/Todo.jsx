@@ -42,30 +42,40 @@ function Todolist() {
     }
     };
 
+  const clearTodo = () => {
+    setTodos([]);
+  };
+
     
 
   return (
 
-    <div>
+    <div role="grid">
       <Stack direction="row" spacing={2} justifyContent="center" alignItems="center">
       <TextField
         label="Description"
         variant="standard"
-        name="description" value={todo.description}
+        name="description"
+        placeholder="description"
+        value={todo.description}
         onChange={inputChanged}/>
         <TextField
         label="Date"
         variant="standard"
         name="date"
+        placeholder="date"
         value={todo.date}
         onChange={inputChanged} />
         <TextField
         label="Priority"
         variant="standard"
-        name="priority" value={todo.priority}
+        name="priority"
+        placeholder="priority"
+        value={todo.priority}
         onChange={inputChanged}/>
       <button onClick={addTodo}>Add</button>
       <button onClick={deleteTodo}>Delete</button>
+      <button onClick={clearTodo}>Clear All</button>
       </Stack>
       <div className="ag-theme-material"
 style={{height: '700px', width: '100%', margin: 'auto'}} >
